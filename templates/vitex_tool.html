@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>SignUp Template for Bootstrap </title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+	   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+	<link href="static/css/vitex_tool.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="static/js/vitex_tool.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 col-sm-8">
+				<h2 class="mb-5 text-center">
+					Please provide VITE address to check if and how you are affected
+					by recent attack on Epic-Cash blockchain
+				</h2>
+				<form class="form-signin " role="form">
+					<input type="text" id="address" name="address" class="form-control"
+						   placeholder="Vite address" required autofocus>
+					<button id="button" class="btn btn-lg btn-info btn-block mt-3 w-100" type="button">Check </button>
+				</form>
+
+				<div id="results" class="epic_hide text-white h5 mt-5">
+					<div class="row d-flex justify-content-between mb-3 px-3">
+						<div class="h2 text-white-50">
+							WALLET SUMMARY
+						</div>
+						<div class="text-white mb-4 py-2"><small>
+							Compare Vite wallet balance from today and the moment of hack<br>
+							(1615530744 in UNIX TIMESTAMP, Fri Mar 12 2021 06:32:24 GMT+0)<br>
+							Difference may show how much EPIC will be lost during rollback,
+							but it's not reliable (it could also mean transfers to exchange)
+
+						</small></div>
+						<hr class="hr-text">
+
+						<div class="col-sm-8 my-2">TODAY BALANCE:</div>
+						<div class="col-sm-4 my-2">
+							<span id="wallet_today_balance"></span> EPIC
+						</div>
+
+						<div class="col-sm-8 my-2">12 MARCH BALANCE:</div>
+						<div class="col-sm-4 my-2">
+							<span id="wallet_history_balance"></span> EPIC
+						</div>
+
+						<div class="col-sm-8 my-2">DIFFERENCE:</div>
+						<div class="col-sm-4 my-2">
+							<span id="wallet_difference" class="text-warning"></span> EPIC
+						</div>
+					</div>
+
+					<hr class="hr-text py-1">
+
+					<div class="row d-flex justify-content-between mt-5 px-3">
+						<div class="h2 text-white-50">EXCHANGE SUMMARY</div>
+						<div class="text-white mb-4 py-2"><small>
+							Total bought and sold coins after the moment of event,
+							positive difference (balance) is estimated lost.
+							Negative balance means, you will have more EPIC after rollback.
+							Estimated dump is 2,800,000 EPIC, 'Participation' value is your share
+						</small></div>
+						<hr class="hr-text">
+
+						<div class="col-sm-8 my-2">TOTAL BOUGHT:</div>
+						<div class="col-sm-4 my-2">
+							<span id="buy_value"></span> EPIC
+						</div>
+
+						<div class="col-sm-8 my-2">TOTAL SOLD:</div>
+						<div class="col-sm-4 my-2">
+							<span id="sold_value"></span> EPIC
+						</div>
+
+						<div class="col-sm-8 my-2">BALANCE</div>
+						<div class="col-sm-4 my-2">
+							<span id="balance" class="text-warning"></span> EPIC
+						</div>
+
+						<div class="col-sm-8 my-2">PARTICIPATION</div>
+						<div class="col-sm-4 my-2">
+							<span id="participation"></span>%
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+</body>
+ 
+</html>
