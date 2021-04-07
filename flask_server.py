@@ -15,6 +15,7 @@ def get_account_info():
 
     response = {'wallet': False, 'exchange': False}
     address = request.form['address']
+    print('-----------------------------------------------')
     print(address)
     if not address.startswith('vite') or len(address) != 55:
         return jsonify(response)
@@ -93,6 +94,7 @@ def get_account_info():
         total_hack_epics = 2_800_000
 
         # What part of it is you
+
         participation = round(balance / total_hack_epics * 100, 3)
 
         response['exchange'] = {
@@ -103,7 +105,7 @@ def get_account_info():
             'balance': balance,
             'participation': participation
             }
-
+    print('-----------------------------------------------')
     return jsonify(response)
 
 

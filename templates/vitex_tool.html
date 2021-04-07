@@ -23,16 +23,16 @@
     <div class="container">
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-6 col-md-8">
-				<div class="row d-flex justify-content-center align-items-center mb-3">
-					<div class="col-md-5 col-sm-12 text-center">
+				<div class="row d-flex justify-content-center align-items-center my-2">
+					<div class="col-md-5 col-sm-12 text-center my-2">
 						<img src="https://cwstatic.nyc3.digitaloceanspaces.com/1635/ViteX-Logotype-2.png" width="220px">
 					</div>
-					<div class="col-md-5 col-sm-12 text-center">
+					<div class="col-md-5 col-sm-12 text-center my-2">
 						<img src="https://epic.tech/wp-content/themes/EPIC/img/logo.svg" width="220px">
 					</div>
 				</div>
 				<div class="row d-flex justify-content-center align-items-center mb-3">
-					<div class=" h2 mb-2 text-center">
+					<div class=" h2 mb-2 text-center text-white-50">
 						Check if and how you are affected by recent attack on Epic-Cash blockchain
 					</div>
 
@@ -59,29 +59,36 @@
 						<div class="h2 text-white-50">
 							WALLET SUMMARY
 						</div>
+
 						<div class="text-white mb-4 py-2"><small>
 							Compare Vite wallet balance from today and the moment of hack<br>
 							<u>(1615530744 in UNIX TIMESTAMP, Fri Mar 12 2021 06:32:24 GMT+0)</u><br>
 							Difference may show how much EPIC will be lost during rollback,
 							but it's not reliable (it could also mean transfers to exchange)
-
 						</small></div>
-						<hr class="hr-text">
 
-						<div class="col-sm-8 my-2">TODAY BALANCE:</div>
-						<div class="col-sm-4 my-2">
-							<span id="wallet_today_balance"></span> EPIC
-						</div>
-
-						<div class="col-sm-8 my-2">12 MARCH BALANCE:</div>
-						<div class="col-sm-4 my-2">
-							<span id="wallet_history_balance"></span> EPIC
-						</div>
-
-						<div class="col-sm-8 my-2">DIFFERENCE:</div>
-						<div class="col-sm-4 my-2">
-							<span id="wallet_difference" class="text-warning"></span> EPIC
-						</div>
+						<table class="table table-borderless text-white">
+							<tbody>
+								<tr>
+									<td class="col-sm-8 my-2">TODAY BALANCE:</td>
+									<td class="col-sm-4 my-2">
+										<span id="wallet_today_balance"></span> EPIC
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-8 my-2">12 MARCH BALANCE:</td>
+									<td class="col-sm-4 my-2">
+										<span id="wallet_history_balance"></span> EPIC
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-8 my-2">DIFFERENCE:</td>
+									<td class="col-sm-4 my-2">
+										<span id="wallet_difference" class="text-warning"></span> EPIC
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 
 					<hr class="hr-text py-1">
@@ -94,27 +101,35 @@
 							Negative balance means, you will have more EPIC after rollback.
 							Estimated dump is 2,800,000 EPIC, 'Participation' value is your share
 						</small></div>
-						<hr class="hr-text">
 
-						<div class="col-sm-8 my-2">TOTAL BOUGHT:</div>
-						<div class="col-sm-4 my-2">
-							<span id="buy_value"></span> EPIC
-						</div>
-
-						<div class="col-sm-8 my-2">TOTAL SOLD:</div>
-						<div class="col-sm-4 my-2">
-							<span id="sold_value"></span> EPIC
-						</div>
-
-						<div class="col-sm-8 my-2">BALANCE</div>
-						<div class="col-sm-4 my-2">
-							<span id="balance" class="text-warning"></span> EPIC
-						</div>
-
-						<div class="col-sm-8 my-2">PARTICIPATION</div>
-						<div class="col-sm-4 my-2">
-							<span id="participation"></span>%
-						</div>
+						<table class="table table-borderless text-white">
+							<tbody>
+								<tr>
+									<td class="col-sm-8 my-2">TOTAL BOUGHT:</td>
+									<td class="col-sm-4 my-2">
+										<span id="buy_value"></span> EPIC
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-8 my-2">TOTAL SOLD:</td>
+									<td class="col-sm-4 my-2">
+										<span id="sold_value"></span> EPIC
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-8 my-2">BALANCE</td>
+									<td class="col-sm-4 my-2">
+										<span id="balance" class="text-warning"></span> EPIC
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-8 my-2">PARTICIPATION</td>
+									<td class="col-sm-4 my-2">
+										<span id="participation"></span>%
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
