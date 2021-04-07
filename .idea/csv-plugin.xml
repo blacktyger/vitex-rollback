@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\readme.md">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\templates\vitex_tool.html">
           <value>
             <Attribute>

@@ -16,13 +16,13 @@
 	<link href="static/css/vitex_tool.css" rel="stylesheet">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="static/js/vitex_tool.js"></script>
+	<script src="static/js/vitex_tool_ver2.js"></script>
 </head>
 
 <body>
     <div class="container">
 		<div class="row d-flex justify-content-center">
-			<div class="col-lg-6 col-md-8">
+			<div class="col-xl-8 col-lg-9 col-md-11">
 				<div class="row d-flex justify-content-center align-items-center my-2">
 					<div class="col-md-5 col-sm-12 text-center my-2">
 						<img src="https://cwstatic.nyc3.digitaloceanspaces.com/1635/ViteX-Logotype-2.png" width="220px">
@@ -37,15 +37,15 @@
 					</div>
 
 					<div class="h5 px-5 text-center mt-3 mb-5">
-						<a href="https://labs.epic.tech/" class="text-warning">
+						<a href="https://labs.epic.tech/t/36" class="text-warning">
 							More details
 						</a>
 					</div>
 				</div>
 
-				<form class="form-signin " role="form">
+				<form class="form" role="form">
 					<input type="text" id="address" name="address" class="form-control"
-						   placeholder="Vite address" required autofocus>
+						   placeholder="Vite address" required autofocus style="height:50px; font-size:1.3rem; ">
 					<button id="button" class="btn btn-lg btn-info btn-block mt-3 w-100" type="button">Check </button>
 					<div class="text-center mt-3">
 						 <span id="loading_info" class="h5 epic_hide text-white-50">
@@ -62,31 +62,38 @@
 
 						<div class="text-white mb-4 py-2"><small>
 							Compare Vite wallet balance from today and the moment of hack<br>
-							<u>(1615530744 in UNIX TIMESTAMP, Fri Mar 12 2021 06:32:24 GMT+0)</u><br>
-							Difference may show how much EPIC will be lost during rollback,
-							but it's not reliable (it could also mean transfers to exchange)
+							<u>Friday 12 March, 2021 06:32:24 GMT+0, timestamp 1615530744</u><br>
+							It is Vite wallet balance - without assets transferred to exchange.
 						</small></div>
 
 						<table class="table table-borderless text-white">
 							<tbody>
 								<tr>
 									<td class="col-sm-8 my-2">TODAY BALANCE:</td>
-									<td class="col-sm-4 my-2">
+									<td class="col-sm-4 my-2 text-right">
 										<span id="wallet_today_balance"></span> EPIC
 									</td>
 								</tr>
 								<tr>
 									<td class="col-sm-8 my-2">12 MARCH BALANCE:</td>
-									<td class="col-sm-4 my-2">
+									<td class="col-sm-4 my-2 text-right">
 										<span id="wallet_history_balance"></span> EPIC
 									</td>
 								</tr>
 								<tr>
 									<td class="col-sm-8 my-2">DIFFERENCE:</td>
-									<td class="col-sm-4 my-2">
+									<td class="col-sm-4 my-2 text-right">
 										<span id="wallet_difference" class="text-warning"></span> EPIC
 									</td>
 								</tr>
+							<tr>
+								<td>
+									<div class="text-white-50"><small>
+										Difference may show how much EPIC is lost during rollback,
+										but due to inside transfers it is not reliable information
+									</small></div>
+								</td>
+							</tr>
 							</tbody>
 						</table>
 					</div>
@@ -95,11 +102,14 @@
 
 					<div class="row d-flex justify-content-between mt-5 px-3">
 						<div class="h2 text-white-50">EXCHANGE SUMMARY</div>
+						<div class="text-white-50 h6 mb-4 mt-1">EPIC.001-BTC.000 PAIR</div>
+
 						<div class="text-white mb-4 py-2"><small>
-							Total bought and sold coins after the moment of event,
-							positive difference (balance) is estimated lost.
-							Negative balance means, you will have more EPIC after rollback.
-							Estimated dump is 2,800,000 EPIC, 'Participation' value is your share
+							Total bought and sold values are successfully filled orders
+							on ViteX exchange after event time. Difference between those
+							is shown as Balance value. Positive balance means that much
+							coins will be subtract from exchange account, negative balance
+							will show how much coins will be added to your account after rollback.
 						</small></div>
 
 						<table class="table table-borderless text-white">
@@ -123,16 +133,32 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="col-sm-8 my-2">PARTICIPATION</td>
-									<td class="col-sm-4 my-2">
-										<span id="participation"></span>%
+									<td class="col-sm-8 mt-2">PARTICIPATION</td>
+									<td class="col-sm-4 mt-2">
+										<span id="participation"></span>%*
 									</td>
-								</tr>
 							</tbody>
 						</table>
+						<div class="text-white-50 h5 mb-4 py-2"><small>
+							*Estimated total damage due attack is 2,800,000 EPIC,
+							Participation value shows roughly this account share.
+						</small>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="text-center mt-5 pt-5 h6">
+			<p class="text-white-50">
+				All information's and data in only estimated,
+				values are not guaranteed.
+				<br>Webapp is in beta version.
+				For more specific data visit
+				<a href="https://vitetxs.de/">Vitex-Tools</a>.
+			</p>
+			<p class="text-white">
+				<a href="https://github.com/blacktyger/">`blacktyger</a>
+				@ 2021 for Epic-Cash Community.
+			</p>
 		</div>
      </div>
 

@@ -29,13 +29,13 @@ $(function(){
 				button.prop("disabled", false);
                 button.html(`Check `);
 
-                $('#wallet_today_balance').text(response.wallet.wallet_today_balance);
-                $('#wallet_history_balance').text(response.wallet.wallet_history_balance);
-                $('#wallet_difference').text(response.wallet.wallet_difference);
+                $('#wallet_today_balance').text(response.wallet.wallet_today_balance.toLocaleString('en-US'));
+                $('#wallet_history_balance').text(response.wallet.wallet_history_balance.toLocaleString('en-US'));
+                $('#wallet_difference').text(response.wallet.wallet_difference.toLocaleString('en-US'));
 
-                $('#buy_value').text(response.exchange.total_buy);
-                $('#sold_value').text(response.exchange.total_sold);
-                $('#balance').text(response.exchange.balance);
+                $('#buy_value').text(response.exchange.total_buy.toLocaleString('en-US'));
+                $('#sold_value').text(response.exchange.total_sold.toLocaleString('en-US'));
+                $('#balance').text(response.exchange.balance.toLocaleString('en-US'));
                 $('#participation').text(response.exchange.participation);
 
                 if (response.wallet || response.exchange) {

@@ -1,8 +1,14 @@
 from vitex_api import get_wallet_transactions, get_exchange_orders
 from flask import Flask, render_template, request, jsonify
-import pandas as pd
+import datetime
+
 
 app = Flask(__name__)
+
+
+@app.template_filter()
+def numberFormat(value):
+    return format(int(value), ',d')
 
 
 @app.route('/')
@@ -12,10 +18,10 @@ def home():
 
 @app.route('/get_account_info', methods=['POST'])
 def get_account_info():
-
     response = {'wallet': False, 'exchange': False}
     address = request.form['address']
     print('-----------------------------------------------')
+    print(str(datetime.datetime.now()))
     print(address)
     if not address.startswith('vite') or len(address) != 55:
         return jsonify(response)
@@ -26,7 +32,8 @@ def get_account_info():
     # ^ 'THE' block: https://explorer.epic.tech/blockdetail/861141
     # ^ UNIX TIMESTAMP: https://www.unixtimestamp.com/
 
-    time_frame = [1615530744, 1617631885]
+    now = int(datetime.datetime.now().timestamp())
+    event_timestamp = 1615530744
     trading_pair = "EPIC-001_BTC-000"
     response = {'wallet': False, 'exchange': False}
 
@@ -34,7 +41,8 @@ def get_account_info():
     # to download and save data from API in form of CSV files
     transactions = get_wallet_transactions(viteAddress=address)
     # print(transactions)
-    orders = get_exchange_orders(viteAddress=address, limit=5000, filterTime=time_frame,
+    orders = get_exchange_orders(viteAddress=address, limit=5000,
+                                 filterTime=[event_timestamp, now],
                                  side=None, symbol=trading_pair, status=None)
 
     # ---------------------------------------#
@@ -45,7 +53,7 @@ def get_account_info():
 
         sent = wallet_df.transactionType == "Sent"
         received = wallet_df.transactionType == "Recieved"
-        time = wallet_df.datetime < time_frame[0]
+        time = wallet_df.datetime < event_timestamp
 
         # Calculate balance before event date
         e_total_sent = round(sum(wallet_df[sent & time].decimalAmount), 2)
