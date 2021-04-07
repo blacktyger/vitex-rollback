@@ -1,5 +1,5 @@
 from vitex_api import get_wallet_transactions, get_exchange_orders
-from flask import Flask, render_template, request, json, jsonify
+from flask import Flask, render_template, request, jsonify
 import pandas as pd
 
 app = Flask(__name__)

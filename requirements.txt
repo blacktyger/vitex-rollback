@@ -1,5 +1,6 @@
 certifi
 chardet
+flask
 gunicorn
 click
 idna
