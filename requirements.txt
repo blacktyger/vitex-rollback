@@ -1,0 +1,15 @@
+certifi
+chardet
+click
+idna
+itsdangerous
+Jinja2
+MarkupSafe
+numpy
+pandas
+python-dateutil
+pytz
+requests
+six
+urllib3
+Werkzeug
