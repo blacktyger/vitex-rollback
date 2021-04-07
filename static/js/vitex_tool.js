@@ -15,7 +15,8 @@ $(function(){
                 animation: spinner-border .75s linear infinite;width: 1rem;
                 height: 1rem;
                 border-width: .2em;"
-            class="spinner-border spinner-border-sm ml-3" role="status" aria-hidden="true"></span>`
+            class="spinner-border spinner-border-sm ml-3" role="status" aria-hidden="true"></span>
+            (may take some time)`
         );
 
 		$.ajax({
