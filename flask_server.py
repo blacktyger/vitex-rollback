@@ -47,13 +47,13 @@ def get_account_info():
         time = wallet_df.datetime < time_frame[0]
 
         # Calculate balance before event date
-        e_total_sent = sum(wallet_df[sent & time].decimalAmount)
-        e_total_received = sum(wallet_df[received & time].decimalAmount)
+        e_total_sent = round(sum(wallet_df[sent & time].decimalAmount), 2)
+        e_total_received = round(sum(wallet_df[received & time].decimalAmount), 2)
         wallet_history_balance = round(e_total_received + e_total_sent, 2)
 
         # Calculate balance for today
-        total_sent = sum(wallet_df[sent].decimalAmount)
-        total_received = sum(wallet_df[received].decimalAmount)
+        total_sent = round(sum(wallet_df[sent].decimalAmount), 2)
+        total_received = round(sum(wallet_df[received].decimalAmount), 2)
         wallet_today_balance = round(total_received + total_sent, 2)
 
         # Balance difference between event day and today
@@ -79,8 +79,8 @@ def get_account_info():
         bought = df.side == "Buy"
         sold = df.side == "Sell"
 
-        total_buy = sum(df[filled & bought].quantity)
-        total_sold = sum(df[filled & sold].quantity)
+        total_buy = round(sum(df[filled & bought].quantity), 2)
+        total_sold = round(sum(df[filled & sold].quantity), 2)
 
         buy_value = round(sum(df[filled & bought].amount), 2)
         sold_value = round(sum(df[filled & sold].amount), 4)
@@ -90,7 +90,7 @@ def get_account_info():
         # --------------------------#
         # Some interesting numbers  #
         # --------------------------#
-        total_hack_epics = 2_8000_000
+        total_hack_epics = 2_800_000
 
         # What part of it is you
         participation = round(balance / total_hack_epics * 100, 3)

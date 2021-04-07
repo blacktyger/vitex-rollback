@@ -47,6 +47,11 @@
 					<input type="text" id="address" name="address" class="form-control"
 						   placeholder="Vite address" required autofocus>
 					<button id="button" class="btn btn-lg btn-info btn-block mt-3 w-100" type="button">Check </button>
+					<div class="text-center mt-3">
+						 <span id="loading_info" class="h5 epic_hide text-white-50">
+							It may take up to 5 minutes, if hang for longer refresh page and try again
+						 </span>
+					</div>
 				</form>
 
 				<div id="results" class="epic_hide text-white h5 mt-5">
@@ -56,7 +61,7 @@
 						</div>
 						<div class="text-white mb-4 py-2"><small>
 							Compare Vite wallet balance from today and the moment of hack<br>
-							(1615530744 in UNIX TIMESTAMP, Fri Mar 12 2021 06:32:24 GMT+0)<br>
+							<u>(1615530744 in UNIX TIMESTAMP, Fri Mar 12 2021 06:32:24 GMT+0)</u><br>
 							Difference may show how much EPIC will be lost during rollback,
 							but it's not reliable (it could also mean transfers to exchange)
 
@@ -112,13 +117,12 @@
 						</div>
 					</div>
 				</div>
-			</>
+			</div>
 		</div>
      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
 </body>
  
 </html>

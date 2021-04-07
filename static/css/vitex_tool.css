@@ -1,10 +1,10 @@
 body {
-  padding-top: 80px;
-  padding-bottom: 40px;
-  background: rgb(93,107,219);
-  background: linear-gradient(90deg, rgba(93,107,219,1) 0%, rgba(62,147,176,1) 40%, rgba(64,82,200,0.3617822128851541) 100%);
+    padding-top: 80px;
+    padding-bottom: 500px;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
 .epic_hide {
     display: none;
 }
