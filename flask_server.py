@@ -32,7 +32,7 @@ def get_account_info():
     # Here we gonna use our functions from vitex_api.py
     # to download and save data from API in form of CSV files
     transactions = get_wallet_transactions(viteAddress=address)
-    print(transactions)
+    # print(transactions)
     orders = get_exchange_orders(viteAddress=address, limit=5000, filterTime=time_frame,
                                  side=None, symbol=trading_pair, status=None)
 

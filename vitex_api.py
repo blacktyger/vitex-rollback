@@ -110,7 +110,7 @@ def get_wallet_transactions(viteAddress):
         random.shuffle(localIP)
         for ip in localIP:
             if tryIP(ip):
-                print('Connecting to node IP: ' + ip)
+                print('Connecting to VITEX node IP: ' + ip)
                 return ip
             else:
                 print('bad backIP ' + ip)
@@ -150,7 +150,7 @@ def get_wallet_transactions(viteAddress):
 
     try:
         response = requests.post(url=url, json=body, headers=header)
-        print('Downloading ...')
+        print('Downloading data...')
         if response.status_code == 200:
             resp = response.json()
             if resp['result'] is None:
