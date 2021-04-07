@@ -15,6 +15,7 @@ def get_account_info():
 
     response = {'wallet': False, 'exchange': False}
     address = request.form['address']
+    print(address)
     if not address.startswith('vite') or len(address) != 55:
         return jsonify(response)
 
