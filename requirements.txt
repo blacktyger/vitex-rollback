@@ -1,5 +1,6 @@
 certifi
 chardet
+gunicorn
 click
 idna
 itsdangerous
