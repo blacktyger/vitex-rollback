@@ -2,6 +2,9 @@ from vitex_api import get_wallet_transactions, get_exchange_orders
 from flask import Flask, render_template, request, jsonify
 import datetime
 
+# ---------------------------------#
+# DIRTY VERSION WITH MESS IN FILES #
+# ---------------------------------#
 
 app = Flask(__name__)
 
