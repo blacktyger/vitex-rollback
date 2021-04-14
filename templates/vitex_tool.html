@@ -190,25 +190,21 @@
 						</table>
 
 					<div id="accordion">
-						<div class="card">
-							<div class="card-header text-center" id="headingOne">
-								<h5 class="mb-0">
-									<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										SHOW ALL ORDERS
-									</button>
-								</h5>
-							</div>
-							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-								<div class="card-body">
-									<table id="orders_table" class="table align-items-center">
-										<thead class="text-center">
-											<th>DATE</th><th>SIDE</th><th>EPIC</th><th>BTC</th><th>USD</th>
-										</thead>
-										<tbody></tbody>
-								</table>
-							</div>
+						<div class="card-header text-center" id="headingOne">
+							<h5 class="mb-0">
+								<button class="btn btn-lg btn-info btn-block mt-3 w-100" data-toggle="collapse"
+										data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									SHOW ALL ORDERS</button>
+							</h5>
 						</div>
-					</div>
+						<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+							<table id="orders_table" class="table align-items-center text-white">
+								<thead class="text-center">
+									<th>DATE</th><th>SIDE</th><th>EPIC</th><th>BTC</th><th>USD</th>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
 				</div>
 			</div>
 		</div>
