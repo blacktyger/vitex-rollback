@@ -14,8 +14,12 @@
 	   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 	<link href="static/css/vitex_tool.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
 	<script src="static/js/vitex_tool_ver2.js"></script>
 </head>
 
@@ -28,7 +32,7 @@
 						<img src="https://cwstatic.nyc3.digitaloceanspaces.com/1635/ViteX-Logotype-2.png" width="220px">
 					</div>
 					<div class="col-md-5 col-sm-12 text-center my-2">
-						<img src="https://i.imgur.com/BpouDVg.png" width="220px">
+						<img src="https://i.ibb.co/ZKHCgwN/Epic-Cash-logo-FEB-2021-v01.png" width="220px">
 					</div>
 				</div>
 				<div class="row d-flex justify-content-center align-items-center mb-3">
@@ -105,10 +109,11 @@
 						<div class="text-white-50 h6 mb-4 mt-1">EPIC.001-BTC.000 PAIR</div>
 
 						<div class="text-white mb-4 py-2"><small>
-							Total bought and sold values are successfully filled orders
-							on ViteX exchange after event time. Difference between those
-							is shown as Balance value. Positive balance indicates net buyer
-							during breach period and negative balance indicates net seller.
+							Total bought and sold values are successfully filled or
+							partially filled orders on ViteX exchange after event time.
+							Difference between those is shown as Balance value.
+							Positive balance indicates net buyer during breach period
+							and negative balance indicates net seller.
 						</small></div>
 
 						<table class="table table-borderless text-white">
@@ -144,8 +149,70 @@
 						</small>
 					</div>
 				</div>
+
+				<hr class="hr-text py-1">
+
+				<div class="row">
+					<div class="h2 text-white-50">ORDERS SUMMARY</div>
+					<div class="text-white mb-4 py-2"><small>
+						Orders details with calculated USD value for each trade at the moment of trade -
+						data from <a class="text-white" href="https://coinpaprika.com/" target="_blank">Coinpaprika</a>
+						with 1h accuracy in BTC-USD price.
+					</small></div>
+
+					<table class="table table-borderless text-white">
+							<tbody>
+								<tr>
+									<td class="col-sm-8 my-2">TOTAL ORDERS:</td>
+									<td class="col-sm-4 my-2">
+										<span id="total_orders"></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-8 my-2">TOTAL BOUGHT:</td>
+									<td class="col-sm-4 my-2">
+										<span id="buy_value_usd"></span> USD
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-8 my-2">TOTAL SOLD:</td>
+									<td class="col-sm-4 my-2">
+										<span id="sold_value_usd"></span> USD
+									</td>
+								</tr>
+								<tr>
+									<td class="col-sm-8 my-2">BALANCE</td>
+									<td class="col-sm-4 my-2">
+										<span id="balance_usd" class="text-warning"></span> USD
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					<div id="accordion">
+						<div class="card">
+							<div class="card-header text-center" id="headingOne">
+								<h5 class="mb-0">
+									<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										SHOW ALL ORDERS
+									</button>
+								</h5>
+							</div>
+							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+								<div class="card-body">
+									<table id="orders_table" class="table align-items-center">
+										<thead class="text-center">
+											<th>DATE</th><th>SIDE</th><th>EPIC</th><th>BTC</th><th>USD</th>
+										</thead>
+										<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<div class="text-center mt-5 pt-5 h6">
 			<p class="text-white-50">
 				All information's and data in only estimated,
@@ -160,9 +227,8 @@
 			</p>
 		</div>
      </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+		</div>
+	</div>
 </body>
- 
+
 </html>

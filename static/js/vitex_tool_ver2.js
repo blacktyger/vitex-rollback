@@ -20,7 +20,7 @@ $(function(){
         $('#loading_info').toggleClass('epic_hide');
 
 		$.ajax({
-			url: '/get_account_info',
+			url: '/get_account_info_btc',
 			data: $('form').serialize(),
 			type: 'POST',
 			success: function(response){
@@ -38,6 +38,14 @@ $(function(){
                     $('#sold_value').text(response.exchange.total_sold.toLocaleString('en-US'));
                     $('#balance').text(response.exchange.balance.toLocaleString('en-US'));
                     $('#participation').text(response.exchange.participation);
+
+                // ORDERS USD
+                    $('#total_orders').text(response.exchange.total_orders.toLocaleString('en-US'));
+                    $('#buy_value_usd').text(response.exchange.buy_value_usd.toLocaleString('en-US'));
+                    $('#sold_value_usd').text(response.exchange.sold_value_usd.toLocaleString('en-US'));
+                    $('#balance_usd').text(response.exchange.balance_usd.toLocaleString('en-US'));
+
+                    $('#orders_table > tbody').append(response.exchange.orders_table);
                 }
                 if (response.wallet || response.exchange) {
                     $('#results').toggleClass('epic_hide');

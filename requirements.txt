@@ -15,3 +15,5 @@ requests
 six
 urllib3
 Werkzeug
+coinpaprika
+ciso86011

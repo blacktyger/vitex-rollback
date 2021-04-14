@@ -1,7 +1,12 @@
+import time
+
+from coinpaprika import client as Coinpaprika
 from datetime import datetime, timezone
 import pandas as pd
 import requests
 import random
+import ciso8601
+client = Coinpaprika.Client()
 
 
 # -----------------------------------------------------#
@@ -50,20 +55,47 @@ def get_exchange_orders(viteAddress, limit, filterTime, side, symbol, status):
         elif 'order' not in resp['data']:
             return {'errorMsg': 'No orders received from exchange'}
         else:
+
+            # Download historical Bitcoin price in USD to calculate orders value,
+            # data provided by Coinpaprika API <3
+            btc_prices = client.historical(
+                coin_id="btc-bitcoin",
+                start=1615530744,
+                end=1616355904,
+                interval="1h"
+                )
+
+            # Change date string to UNIX timestamp in bitcoin_prices data
+            for item in btc_prices:
+                item['timestamp'] = time.mktime(ciso8601.parse_datetime(item['timestamp']).timetuple())
+            btc_prices = {x['timestamp']: x['price'] for x in btc_prices}
+            print('btc_prices downloaded')
+
             # Iterate through API response orders, create order dictionary,
             # change status and time to human readable form and add to our list
             for order in resp['data']['order']:
                 order_dict = {key: value for key, value in order.items()}
                 order_dict['status'] = status_parser[order_dict['status']]
-                order_dict['createTime'] = datetime.fromtimestamp(int(order_dict['createTime']))
+                order_dict['timestamp'] = order_dict['createTime']
+                order_dict['createTime'] = datetime.\
+                    fromtimestamp(int(order_dict['createTime'])).strftime('%y/%m/%d %H:%M')
                 order_dict['side'] = side_parser[order_dict['side']]
-                order_dict['quantity'] = float(order_dict['quantity'])
-                order_dict['amount'] = float(order_dict['amount'])
-                orders.append(order_dict)
+                order_dict['quantity'] = float(order_dict['executedQuantity'])
+                order_dict['amount'] = round(float(order_dict['executedAmount']), 6)
+
+                # Find timestamp closest to time of event in our bitcoin_prices list and calculate
+                # order value in USD
+                closest_timestamp = min(
+                    list(btc_prices.keys()), key=lambda x: abs(x - int(order_dict['timestamp'])))
+                btc_price = btc_prices[closest_timestamp]
+                order_dict['usd_value'] = round(float(btc_price * order_dict['amount']), 1)
+
+                if order_dict['status'] in ['Filled', 'Partially Filled']:
+                    orders.append(order_dict)
     else:
         return {'errorMsg': response.status_code}
 
-    return pd.DataFrame(orders)
+    return orders
 
 
 def get_wallet_transactions(viteAddress):

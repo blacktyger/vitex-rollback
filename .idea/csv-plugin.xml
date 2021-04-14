@@ -17,6 +17,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\dollar_value.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\flask_server.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\readme.md">
           <value>
             <Attribute>
