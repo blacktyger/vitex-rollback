@@ -16,4 +16,4 @@ six
 urllib3
 Werkzeug
 coinpaprika
-ciso86011
+ciso8601
