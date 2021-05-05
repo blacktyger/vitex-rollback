@@ -1,166 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
- 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
 
-	<title>ViteX Rollback tool </title>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-	   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+		<title>ViteX Rollback tool </title>
 
-	<link href="static/css/vitex_tool.css" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+		   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link href="static/css/vitex_tool.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-	<script src="static/js/vitex_tool_ver2.js"></script>
-</head>
+		<script src="static/js/vitex_tool_ver2.js"></script>
+	</head>
 
-<body>
-    <div class="container">
-		<div class="row d-flex justify-content-center">
-			<div class="col-xl-8 col-lg-9 col-md-11">
-				<div class="row d-flex justify-content-center align-items-center my-2">
-					<div class="col-md-5 col-sm-12 text-center my-2">
-						<img src="https://cwstatic.nyc3.digitaloceanspaces.com/1635/ViteX-Logotype-2.png" width="220px">
+	<body>
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-xl-8 col-lg-9 col-md-11">
+					<div class="row d-flex justify-content-center align-items-center my-2">
+						<div class="col-md-5 col-sm-12 text-center my-2">
+							<img src="https://cwstatic.nyc3.digitaloceanspaces.com/1635/ViteX-Logotype-2.png" width="220px">
+						</div>
+						<div class="col-md-5 col-sm-12 text-center my-2">
+							<img src="https://i.ibb.co/ZKHCgwN/Epic-Cash-logo-FEB-2021-v01.png" width="220px">
+						</div>
 					</div>
-					<div class="col-md-5 col-sm-12 text-center my-2">
-						<img src="https://i.ibb.co/ZKHCgwN/Epic-Cash-logo-FEB-2021-v01.png" width="220px">
-					</div>
-				</div>
-				<div class="row d-flex justify-content-center align-items-center mb-3">
-					<div class=" h2 mb-2 text-center text-white-50">
-						Check if and how you are affected by recent attack on Epic-Cash blockchain
-					</div>
-
-					<div class="h5 px-5 text-center mt-3 mb-5">
-						<a href="https://labs.epic.tech/t/36" class="text-warning">
-							More details
-						</a>
-					</div>
-				</div>
-
-				<form class="form" role="form">
-					<input type="text" id="address" name="address" class="form-control"
-						   placeholder="Vite address" required autofocus style="height:50px; font-size:1.3rem; ">
-					<button id="button" class="btn btn-lg btn-info btn-block mt-3 w-100" type="button">Check </button>
-					<div class="text-center mt-3">
-						 <span id="loading_info" class="h5 epic_hide text-white-50">
-							It may take up to 5 minutes, if hang for longer refresh page and try again
-						 </span>
-					</div>
-				</form>
-
-				<div id="results" class="epic_hide text-white h5 mt-5">
-					<div class="row d-flex justify-content-between mb-3 px-3">
-						<div class="h2 text-white-50">
-							WALLET SUMMARY
+					<div class="row d-flex justify-content-center align-items-center mb-3">
+						<div class=" h2 mb-2 text-center text-white-50">
+							Check if and how you are affected by recent attack on Epic-Cash blockchain
 						</div>
 
-						<div class="text-white mb-4 py-2"><small>
-							Compare Vite wallet balance from today and the moment of hack<br>
-							<u>Friday 12 March, 2021 06:32:24 GMT+0, timestamp 1615530744</u><br>
-							It is Vite wallet balance - without assets transferred to exchange.
-						</small></div>
+						<div class="h5 px-5 text-center mt-3 mb-5">
+							<a href="https://labs.epic.tech/t/36" class="text-warning">
+								More details
+							</a>
+						</div>
+					</div>
 
-						<table class="table table-borderless text-white">
-							<tbody>
-								<tr>
-									<td class="col-sm-8 my-2">TODAY BALANCE:</td>
-									<td class="col-sm-4 my-2 text-right">
-										<span id="wallet_today_balance"></span> EPIC
-									</td>
-								</tr>
-								<tr>
-									<td class="col-sm-8 my-2">12 MARCH BALANCE:</td>
-									<td class="col-sm-4 my-2 text-right">
-										<span id="wallet_history_balance"></span> EPIC
-									</td>
-								</tr>
-								<tr>
-									<td class="col-sm-8 my-2">DIFFERENCE:</td>
-									<td class="col-sm-4 my-2 text-right">
-										<span id="wallet_difference" class="text-warning"></span> EPIC
-									</td>
-								</tr>
-							<tr>
-								<td>
-									<div class="text-white-50"><small>
-										Difference may show how much EPIC is lost during rollback,
-										but due to inside transfers it is not reliable information.
-									</small></div>
-								</td>
-							</tr>
-							</tbody>
-						</table>
+					<form class="form" role="form">
+						<input type="text" id="address" name="address" class="form-control"
+							   placeholder="Vite address" required autofocus style="height:50px; font-size:1.3rem; ">
+						<button id="button" class="btn btn-lg btn-info btn-block mt-3 w-100" type="button">Check </button>
+						<div class="text-center mt-3">
+							 <span id="loading_info" class="h5 epic_hide text-white-50">
+								It may take up to 5 minutes, if hang for longer refresh page and try again
+							 </span>
+						</div>
+					</form>
+
+					<div id="results" class="epic_hide text-white h5 mt-5">
+	<!--					<div class="row d-flex justify-content-between mb-3 px-3">-->
+	<!--						<div class="h2 text-white-50">-->
+	<!--							DIFFERENT BALANCES OF EPIC-001 AND EPIC-002-->
+	<!--						</div>-->
+	<!--						<div class="text-white mb-4 py-2"><small>-->
+	<!--							Compare Vite wallet balance from today and the moment of hack<br>-->
+	<!--							<u>Friday 12 March, 2021 06:32:24 GMT+0, timestamp 1615530744</u><br>-->
+	<!--							It is Vite wallet balance - without assets transferred to exchange.-->
+	<!--						</small></div>-->
+
+	<!--						<table class="table table-borderless text-white">-->
+	<!--							<tbody>-->
+	<!--								<tr>-->
+	<!--									<td class="col-sm-8 my-2">TODAY BALANCE:</td>-->
+	<!--									<td class="col-sm-4 my-2 text-right">-->
+	<!--										<span id="wallet_today_balance"></span> EPIC-->
+	<!--									</td>-->
+	<!--								</tr>-->
+	<!--								<tr>-->
+	<!--									<td class="col-sm-8 my-2">12 MARCH BALANCE:</td>-->
+	<!--									<td class="col-sm-4 my-2 text-right">-->
+	<!--										<span id="wallet_history_balance"></span> EPIC-->
+	<!--									</td>-->
+	<!--								</tr>-->
+	<!--								<tr>-->
+	<!--									<td class="col-sm-8 my-2">DIFFERENCE:</td>-->
+	<!--									<td class="col-sm-4 my-2 text-right">-->
+	<!--										<span id="wallet_difference" class="text-warning"></span> EPIC-->
+	<!--									</td>-->
+	<!--								</tr>-->
+	<!--							<tr>-->
+	<!--								<td>-->
+	<!--									<div class="text-white-50"><small>-->
+	<!--										Difference may show how much EPIC is lost during rollback,-->
+	<!--										but due to inside transfers it is not reliable information.-->
+	<!--									</small></div>-->
+	<!--								</td>-->
+	<!--							</tr>-->
+	<!--							</tbody>-->
+	<!--						</table>-->
+	<!--					</div>-->
+
+	<!--					<hr class="hr-text py-1">-->
+
+						<div class="row d-flex justify-content-between mt-3 px-3">
+							<div class="h2 text-white-50">
+								DIFFERENT BALANCES OF EPIC-001 AND EPIC-002
+							</div>
+							<div class="text-white mb-4 py-2"><small>
+								While we can track history and calculate Vitex traders loses,
+								we can't do the same to people who sent coins to Vitex after 12 March.
+								There is no possibility to tell where those coins were coming from,
+								hence if they were minted by hackers exploit or not.
+
+								Nevertheless we will hear and will try to help anyone who lost EPIC during that time.
+							</small></div>
+						</div>
+
+						<hr class="hr-text py-1">
+
+						<div class="row d-flex justify-content-between mt-5 px-3">
+							<div class="h2 text-white-50">VITEX EXCHANGE TRADING SUMMARY</div>
+							<div class="text-white-50 h6 mb-4 mt-1">EPIC.001-BTC.000 PAIR</div>
+
+							<div class="text-white mb-4 py-2"><small>
+								Total bought and sold values are successfully filled or
+								partially filled orders on ViteX exchange after event time.
+								Difference between those is shown as Balance value.
+								Positive balance indicates net buyer during breach period
+								and negative balance indicates net seller.
+							</small></div>
+
+							<table class="table table-borderless text-white">
+								<tbody>
+									<tr>
+										<td class="col-sm-8 my-2">TOTAL BOUGHT:</td>
+										<td class="col-sm-4 my-2">
+											<span id="buy_value"></span> EPIC
+										</td>
+									</tr>
+									<tr>
+										<td class="col-sm-8 my-2">TOTAL SOLD:</td>
+										<td class="col-sm-4 my-2">
+											<span id="sold_value"></span> EPIC
+										</td>
+									</tr>
+									<tr>
+										<td class="col-sm-8 my-2">BALANCE</td>
+										<td class="col-sm-4 my-2">
+											<span id="balance" class="text-warning"></span> EPIC
+										</td>
+									</tr>
+									<tr>
+										<td class="col-sm-8 mt-2">PARTICIPATION</td>
+										<td class="col-sm-4 mt-2">
+											<span id="participation"></span>%*
+										</td>
+								</tbody>
+							</table>
+							<div class="text-white-50 h5 mb-4 py-2"><small>
+								*Estimated total damage due attack is 2,800,000 EPIC,
+								Participation value shows roughly this account share.
+							</small>
+						</div>
 					</div>
 
 					<hr class="hr-text py-1">
 
-					<div class="row d-flex justify-content-between mt-5 px-3">
-						<div class="h2 text-white-50">EXCHANGE SUMMARY</div>
-						<div class="text-white-50 h6 mb-4 mt-1">EPIC.001-BTC.000 PAIR</div>
-
+					<div class="row">
+						<div class="h2 text-white-50">ORDERS DETAILS</div>
 						<div class="text-white mb-4 py-2"><small>
-							Total bought and sold values are successfully filled or
-							partially filled orders on ViteX exchange after event time.
-							Difference between those is shown as Balance value.
-							Positive balance indicates net buyer during breach period
-							and negative balance indicates net seller.
+							Orders details with calculated USD value for each trade at the moment of trade -
+							data from <a class="text-white" href="https://coinpaprika.com/" target="_blank">Coinpaprika</a>
+							with 1h accuracy in BTC-USD price.
 						</small></div>
+						<div class="text-white-50 h6 mb-4 mt-1">12 - 21 MARCH 2021</div>
+
 
 						<table class="table table-borderless text-white">
-							<tbody>
-								<tr>
-									<td class="col-sm-8 my-2">TOTAL BOUGHT:</td>
-									<td class="col-sm-4 my-2">
-										<span id="buy_value"></span> EPIC
-									</td>
-								</tr>
-								<tr>
-									<td class="col-sm-8 my-2">TOTAL SOLD:</td>
-									<td class="col-sm-4 my-2">
-										<span id="sold_value"></span> EPIC
-									</td>
-								</tr>
-								<tr>
-									<td class="col-sm-8 my-2">BALANCE</td>
-									<td class="col-sm-4 my-2">
-										<span id="balance" class="text-warning"></span> EPIC
-									</td>
-								</tr>
-								<tr>
-									<td class="col-sm-8 mt-2">PARTICIPATION</td>
-									<td class="col-sm-4 mt-2">
-										<span id="participation"></span>%*
-									</td>
-							</tbody>
-						</table>
-						<div class="text-white-50 h5 mb-4 py-2"><small>
-							*Estimated total damage due attack is 2,800,000 EPIC,
-							Participation value shows roughly this account share.
-						</small>
-					</div>
-				</div>
-
-				<hr class="hr-text py-1">
-
-				<div class="row">
-					<div class="h2 text-white-50">ORDERS SUMMARY</div>
-					<div class="text-white mb-4 py-2"><small>
-						Orders details with calculated USD value for each trade at the moment of trade -
-						data from <a class="text-white" href="https://coinpaprika.com/" target="_blank">Coinpaprika</a>
-						with 1h accuracy in BTC-USD price.
-					</small></div>
-
-					<table class="table table-borderless text-white">
 							<tbody>
 								<tr>
 									<td class="col-sm-8 my-2">TOTAL ORDERS:</td>
@@ -189,42 +206,40 @@
 							</tbody>
 						</table>
 
-					<div id="accordion">
-						<div class="card-header text-center" id="headingOne">
-							<h5 class="mb-0">
-								<button class="btn btn-lg btn-info btn-block mt-3 w-100" data-toggle="collapse"
-										data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									SHOW ALL ORDERS</button>
-							</h5>
+						<div id="accordion">
+							<div class="card-header text-center" id="headingOne">
+								<h5 class="mb-0">
+									<button class="btn btn-lg btn-info btn-block mt-3 w-100" data-toggle="collapse"
+											data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										SHOW ALL ORDERS</button>
+								</h5>
+							</div>
+							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+								<table id="orders_table" class="table align-items-center text-white">
+									<thead class="text-center">
+										<th>DATE</th><th>SIDE</th><th>EPIC</th><th>BTC</th><th>USD</th>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
 						</div>
-						<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-							<table id="orders_table" class="table align-items-center text-white">
-								<thead class="text-center">
-									<th>DATE</th><th>SIDE</th><th>EPIC</th><th>BTC</th><th>USD</th>
-								</thead>
-								<tbody></tbody>
-							</table>
-						</div>
+					</div>
+
+					<div class="text-center mt-5 pt-5 h6">
+						<p class="text-white-50">
+							All information's and data in only estimated,
+							values are not guaranteed.
+							<br>Webapp is in beta version.
+							For more specific data visit
+							<a href="https://vitetxs.de/">Vitex-Tools</a>.
+						</p>
+						<p class="text-white">
+							<a href="https://github.com/blacktyger/">`blacktyger</a>
+							@ 2021 for Epic-Cash Community.
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<div class="text-center mt-5 pt-5 h6">
-			<p class="text-white-50">
-				All information's and data in only estimated,
-				values are not guaranteed.
-				<br>Webapp is in beta version.
-				For more specific data visit
-				<a href="https://vitetxs.de/">Vitex-Tools</a>.
-			</p>
-			<p class="text-white">
-				<a href="https://github.com/blacktyger/">`blacktyger</a>
-				@ 2021 for Epic-Cash Community.
-			</p>
-		</div>
-     </div>
-		</div>
-	</div>
-</body>
-
+	</body>
 </html>

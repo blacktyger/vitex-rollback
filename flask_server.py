@@ -35,16 +35,17 @@ def get_account_info():
     #
     # ^ 'THE' block: https://explorer.epic.tech/blockdetail/861141
     # ^ UNIX TIMESTAMP: https://www.unixtimestamp.com/
-
+    year_ago = 1584705600
     end_date = 1616355904  # 21 March 2021
     event_timestamp = 1615530744  # 12 March 2021
     trading_pair = "EPIC-001_BTC-000"
 
     # Here we gonna use our functions from vitex_api.py
     # to download and save data from API in form of CSV files
-    transactions = get_wallet_transactions(viteAddress=address)
+    transactions = []
+    # transactions = get_wallet_transactions(viteAddress=address)
     # print(transactions)
-    orders = get_exchange_orders(viteAddress=address, limit=5000,
+    orders = get_exchange_orders(viteAddress=address, limit=10000,
                                  filterTime=[event_timestamp, end_date],
                                  side=None, symbol=trading_pair, status=None)
 
@@ -57,18 +58,19 @@ def get_account_info():
         sent = wallet_df.transactionType == "Sent"
         received = wallet_df.transactionType == "Recieved"
         time = wallet_df.datetime < event_timestamp
+        end_time = wallet_df.datetime < end_date
 
         # Calculate balance before event date
         e_total_sent = round(sum(wallet_df[sent & time].decimalAmount), 2)
         e_total_received = round(sum(wallet_df[received & time].decimalAmount), 2)
         wallet_history_balance = round(e_total_received + e_total_sent, 2)
 
-        # Calculate balance for today
-        total_sent = round(sum(wallet_df[sent].decimalAmount), 2)
-        total_received = round(sum(wallet_df[received].decimalAmount), 2)
+        # Calculate balance for 21 March
+        total_sent = round(sum(wallet_df[sent & end_time].decimalAmount), 2)
+        total_received = round(sum(wallet_df[received & end_time].decimalAmount), 2)
         wallet_today_balance = round(total_received + total_sent, 2)
 
-        # Balance difference between event day and today
+        # Balance difference between event day and 21 March
         wallet_difference = round(wallet_today_balance - wallet_history_balance, 2)
 
         response['wallet'] = {
@@ -107,8 +109,7 @@ def get_account_info():
         # --------------------------#
         total_hack_epics = 2_800_000
 
-        # What part of it is you
-
+        # What part of it is user
         participation = round(balance / total_hack_epics * 100, 3)
 
         table = []
@@ -157,4 +158,4 @@ def get_account_info():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=5555)

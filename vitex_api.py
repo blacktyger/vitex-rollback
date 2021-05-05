@@ -60,8 +60,8 @@ def get_exchange_orders(viteAddress, limit, filterTime, side, symbol, status):
             # data provided by Coinpaprika API <3
             btc_prices = client.historical(
                 coin_id="btc-bitcoin",
-                start=1615530744,
-                end=1616355904,
+                start=filterTime[0],
+                end=filterTime[1],
                 interval="1h"
                 )
 
@@ -78,7 +78,7 @@ def get_exchange_orders(viteAddress, limit, filterTime, side, symbol, status):
                 order_dict['status'] = status_parser[order_dict['status']]
                 order_dict['timestamp'] = order_dict['createTime']
                 order_dict['createTime'] = datetime.\
-                    fromtimestamp(int(order_dict['createTime'])).strftime('%y/%m/%d %H:%M')
+                    fromtimestamp(int(order_dict['createTime'])).strftime('%d/%m/%Y %H:%M')
                 order_dict['side'] = side_parser[order_dict['side']]
                 order_dict['quantity'] = float(order_dict['executedQuantity'])
                 order_dict['amount'] = round(float(order_dict['executedAmount']), 6)
@@ -176,7 +176,7 @@ def get_wallet_transactions(viteAddress):
     url = getURL(nodeIP)
     header = getHeader()
 
-    body = getBody(viteAddress, None, 5000)
+    body = getBody(viteAddress, None, 8000)
 
     transactions = []
 
@@ -224,7 +224,6 @@ def get_wallet_transactions(viteAddress):
 
         else:
             print(response.status_code)
-
     except Exception as e:
         print(e)
         return {'errorMsg': 'Exception during request.'}
